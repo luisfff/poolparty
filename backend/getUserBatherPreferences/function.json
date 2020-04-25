@@ -1,0 +1,27 @@
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get"
+      ]
+    },
+    {
+      "type": "table",
+      "name": "preferenceTable",
+      "tableName":"%table_name%",
+      "connection": "AzureWebJobsStorage",
+      "partitionKey": "{headers.x-ms-client-principal-id}",
+      "rowKey": "{headers.x-ms-client-principal-id}",
+      "direction":"in"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}
